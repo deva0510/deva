@@ -1,0 +1,59 @@
+Branching
+--------------
+This feature is provided in git, so that developers can create code related
+to different functionalities  on seprate branches.
+This helps the development team in creating the code in an uncluttered way.
+Later this code can be merged with master branch.
+Default branch of git is "Master"
+
+git branch branchname ( to create a new branch)
+ex:git branch development
+   git branch testing
+   git branch production
+
+git branch  (to see the list of branches)
+
+git checkout  branchname (switching from one branch to another branch)
+ex: git checkout development
+
+git checkout –b branchname (Creating a branch and check out to the branch at a time)
+                 
+git push --all -u  (How to all push local branches to remote repository)
+
+git push -u origin test1 (to push single local branch to remote repository)
+
+git merge branchname (To merge  branch with  master)
+
+git branch --delete branchname (to delete a branch)
+
+git push origin --delete branchname (How to delete a branch in remote repository from local)
+
+
+
+Tags :
+------------------------------------------------------------
+
+Tags are ref's that point to specific points in Git history. Tagging is generally used
+to capture a point in history that is used for a marked version release (i.e. v1. 0.1). 
+git tag tagname (to create a tag)
+
+examples: 
+paytm-mainversion-subversion-patch
+
+icicbank-mainversion-subversion-patch
+
+patym-5.3.2
+
+paytm-5.3.3
+
+paytm-5.4.1
+
+git push origin --tag (to all push tags to remote repository)
+
+
+
+
+
+
+
+

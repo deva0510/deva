@@ -1,0 +1,215 @@
+
+
+
+
+Deployment Object
+-------------------------
+This is also an high level object which can be used for scalling,
+load balancing and perform rolling updates.
+
+Create a deployment file to run nginx 1.7.9 with 3 replicas. 
+Later perform a rolling update to nginx 1.9.1 
+
+
+vim deployment.yml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-deployment
+ labels:
+  author: sunil
+  type: proxyserver
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   type: proxyserver
+ template:
+  metadata:
+   name: nginx-pod
+   labels:
+    type: proxyserver
+  spec:
+   containers:
+    - name: nginx
+      image: nginx:1.7.9
+      ports:
+       - containerPort: 80
+         hostPort: 8888
+ 
+
+:wq
+
+kubectl get all  ( we have one   default service running )
+
+kubectl create -f deployment.yml
+
+TO check, if the deployment is created or not
+--------------------------------------------
+kubectl get deployment ( we can see 1 deployment object )
+
+
+
+
+kubectl get pods  ( we should get 3 pods )
+
+
+
+We can anyways perform scaling, apart from that we can perform rolling updates.
+
+kubectl get all  (  we get all the objects )
+Take a note of the full name of the deployment object
+
+ 
+deployment.apps/nginx-deployment
+
+
+To perform rolling update
+-----------------------------
+
+kubectl --record deployment.apps/nginx-deployment  set image deployment.v1.apps/nginx-deployment nginx=nginx:1.9.1
+
+We get a message ( image updated )
+
+kubectl get pods
+To know more about pod
+------------------------
+kubectl describe pods podname
+
+nginx-deployment-6fdc797dc6-qrlqb
+
+
+
+kubectl describe pods nginx-deployment-6fdc797dc6-qrlqb | less
+
+we can see as Image: nginx:1.9.1
+
+
+:q
+( It will take some time )
+
+kubectl  get pods
+
+++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++
+
+
+
+Service Object
+-----------------------
+This is used for network load balancing and port mapping.
+Service Object uses 3 ports
+1. Target port -  Its is pod or container port 
+2. port - Refers to service port.
+3. hostPort -  Refers to host machine port to make it accessable from external network.
+
+
+
+Service Objects are classified into 3 types
+
+1. clusterIP: This is default type of service object used in kubermetes and it is used
+when we want the pods in the cluster to communicate with each other and not with 
+external network.
+
+
+2. nodePort: This is used, if we want to access the pods from an external network and 
+it also performs network load balancing. ie Even if a pod is running on a specific slave,
+we can access it from other slave in the cluster.
+
+
+3. LoadBalancer:    This is similar to nodePort. It is used for external connectivity of
+a pod and also network load balancing and it also assigns a  public ip for all the nodes 
+combined together.
+
++++++++++++++++++++++++
+
+
+vim pod-definition1.yml
+
+We will be creating a service object for the labels used in pod-definition1.yml
+
+kubectl create -f pod-definition1.yml
+
+As we know by pod will be created using the above command.
+
+We want to create service object for the above pod
+
+Ex: Create a service definition file for port mapping on nginx pod
+
+vim pod-definition1.yml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx-pod
+ labels:
+  author: sunil
+  type: reverse-proxy
+spec:
+ containers: 
+  - name: appserver
+    image: nginx
+
+:wq
+
+kubectl create -f pod-definition1.yml
+
+Observation: Along with the pod, service object gets created.
+This service object is type clusterIP. Hence cannot be accessed from external network.
+
+
+gcloud compute firewall-rules create rule3 --allow tcp:30008
+
+vim service1.yml
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: nginx-service
+ labels:
+  author: sunil
+spec:
+ type: NodePort
+ ports:
+  - targetPort: 80
+    port: 80
+    nodePort: 30008
+ selector:
+  author: sunil
+  type: reverse-proxy
+... 
+
+:wq
+
+ 
+kubectl create -f service1.yml
+
+Now, the nginx pod is accessable externally
+
+kubectl get nodes -o wide
+
+As we have created nodePort, we should able to access from any node.
+
+Take external_IP  from anynode
+
+34.66.234.81:30008   ( We should be able to access nginx )
+
+34.123.230.145:30008
+
+
+
+If service object is not created,  we used to identify in which node the pod is running,
+ take that node IP, from that node IP, we used to access that application.
+
+( Note: We need to open 30008 port in cluster )
+
+++++++++++++++++++++++
+
+
+
+
+

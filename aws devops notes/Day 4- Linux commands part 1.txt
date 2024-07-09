@@ -1,0 +1,100 @@
+Types of users in linux:
+
+root user account:
+This is the main user account in Linux system. It is automatically created during the installation. It has the highest privilege in system. 
+It can do any administrative work and can access any service. This account is intended for system administration and should be used only for 
+this purpose. It should not be used for routine activities. It can’t be deleted. But if require, it can be disabled.
+
+normal user account:
+This is the normal user account. During the installation, one regular user account is created automatically. After the installation, we can 
+create as many regular user accounts as we need. This account has moderate privilege. This account is intended for routine works. 
+It can perform only the tasks for which it is allowed and can access only those files and services for which it is authorized. As per requirement,
+it can be disabled or deleted.
+
+
+service account (or) system user account:
+Service accounts are created by installation packages when they are installed. These accounts are used by services to run processes and execute functions.
+These accounts are neither intended nor should be used for routine work
+
+
+
+Linux Commands
+
+Create a file :
+
+it can be done in different ways.
+
+
+touch file1 (empty file can be created by using touch command)
+
+
+cat > file1 (file with some contents can be created by cat command)
+
+
+cat file1 (contents of the file can be displayed by using the following command)
+
+
+rm file1 (file can be removed by a command called rm)
+
+
+Create a directory :
+
+mkdir dir1 (to create a directory)
+
+rmdir dir1 (to delete an empty directory)
+
+rm -r dir1 (to remove a directory with contents)
+
+cd .. (Go to previous directory)
+
+pwd  (path of present working directory)
+
+How to create 4 directories ( d1 -- d2 --- d3 --- d4 )
+and navigate on those directories.
+
+mkdir d1
+cd d1
+mkdir d2
+cd d2
+mkdir d3
+cd d3
+mkdir d4
+cd d4
+
+
+list and Long list
+ls ( to list all files and directories)
+ls -a (to display all hidden files and normal files)
+ls -l (long list of files and directories with detailed information)
+ls -la (to see all hidden files and directories along with normal files)
+ls -lt (long list of files with time stamps)
+ls -ltr(long list of files with time stamps in reverse order)
+
+
+What if file name starts with .
+touch .file1 (to create a hidden file)
+mkdir .dir1 (to create a hidden directory)
+
+How to copy a file
+cp sourcefilename destinationfilename
+cp home/vamsi/file1  home/rajesh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

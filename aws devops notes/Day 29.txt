@@ -1,0 +1,61 @@
+
+Kubernetes
+------------------------
+Google created this kubernetes.
+It is a opensource tool.
+Pre-requisite is docker.
+
+k8s  -- 8 letters between  k  and  s
+
+It is a container orchestration tool.
+ 
+Kubernetes creates cluster, deploy and manage clusters.
+
+By using kubernetes we form a cluster
+K8S schedules, runs and managers isolated containers.
+
+Convert isolated containers running on different hardwares into a cluster.
+
+In AWS we have a service EKS  ( Elastic kuberneters service )
+
+Features of kubernetes
+---------------------------------
+1) Orchestration (  clustering any no of containers on different hardwares)
+2) Auto scaling
+3) Auto healing ( new containers in place of crashed containers 
+                              similar to handling failover scenarios in docker swarm )
+4) load balancing
+5) rollback  ( going to previous versions )
+
+
+Kubernetes Architecture
+-------------------------------
+
+Cluster is combination of 1 master and multiple nodes.
+
+Pod is atomic unit of deployment in kubernetes.
+
+Pod consists of one or more docker containers.
+Pod runs on node.
+Node is controlled by Kubernetes master
+
+
+Kubernetes does not understand containers.
+
+
+Kubernetes can understand only pods.
+
+
+In this diagram , we have one master and one node.
+node is also called minion.
+Kubernetes master is also called as control plane.
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+

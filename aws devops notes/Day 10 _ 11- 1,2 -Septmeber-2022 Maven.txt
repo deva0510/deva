@@ -1,0 +1,110 @@
+MAVEN TOOL :
+
+Maven is a java based build tool.
+vendor is apache
+
+build tools:
+
+maven ----building java source code
+msbuild --building dotnet source code
+pybuild --python source code
+
+
+sourcecode of java -------> Maven -------> package
+
+
+3 types of packages we can create:
+
+Jar
+War
+ear
+
+Jar-java archived -- standalone application --caluclator
+war-web archived  -- web application---gmail, facebook,any website
+ear-enterprise archived--multi module application 
+
+since maven is a java based tool--prerequisite is java
+
+once linux machine is created and connected 
+go to root user
+sudo su - (command to move to root user)
+
+go to the opt folder to install any third-party softwares
+cd /opt
+
+if wget command is not founnd, first install wget by using below command
+yum install wget -y
+
+To Install java in linux system,use wget command and download link of java
+wget https://download.oracle.com/java/18/latest/jdk-18_linux-x64_bin.rpm
+
+once rpm package is downloaded,use the following command to install 
+yum install jdk-18_linux-x64_bin.rpm -y
+
+once java is installed,check java version by using the below command
+java -version
+
+then download and install maven with the below command
+wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.zip
+
+to extract the zip package,need to install unzip package
+yum install unzip -y
+
+then unzip the maven package by using the following command
+unzip apache-maven-3.8.6-bin.zip
+
+after installing java & maven
+to set path, use the following commands
+echo "export M2_HOME=/opt/apache-maven-3.6.3" >> ~/.bash_profile
+echo 'export PATH=$PATH:$M2_HOME/bin' >> ~/.bash_profile
+source ~/.bash_profile
+
+Now dowmload the java source code from github ,the command is
+git clone https://github.com/shashirajraja/onlinebookstore.git
+
+If git command is not found, then
+yum install git -y
+
+once source code is downloaded, then go to the folder where pom.xml is available
+cd onlinebookstore
+
+then execute the maven commands to compile the source code and to create the package
+mvn validate
+mvn compile
+mvn test
+mvn package
+mvn install
+mvn deploy
+
+
+maven life cycles     ---------   goals
+1.clean               ---------   clean
+2.site                ---------   site  (documentation)
+3.default             ---------   validate,compile,test,package,install,deploy
+
+In maven, we have two repositories
+1.maven local repository  --  ~/.m2/repository/com/mt
+2.maven central repository
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

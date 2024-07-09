@@ -1,0 +1,90 @@
+Git Merge:
+-------------
+It is for Merging one branch with another.
+We have the emergency fix ready, and so let's merge the master and emergency-fix branches.
+First, we need to change to the master branch:
+
+Example :
+
+git checkout master
+Switched to branch 'master'
+
+output:
+git merge emergency-fix
+Updating 09f4acd..dfa79db
+Fast-forward
+ index.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+merge:
+------------------------------------------
+dev : c1,c2,c3
+master:a1,a2,a3,C1
+
+Git Rebase:
+-----------
+
+Rebasing is a process to reapply commits on top of another base trip. It is used to apply 
+a sequence of commits from distinct branches into a final commit. It is an alternative of 
+git merge command.
+
+rebase:
+-------------------------------------------
+dev : c1,c2,c3
+master:a1,a2,a3,C1,C2,C3
+
+
+git show:
+---------
+The git show command is used to display the detailed commit information. 
+example: git show commitid
+
+Git Pull:
+-----------
+The git pull command is used to fetch and download content from a remote repository and
+immediately update the local repository to match that content.
+So basically, git pull = git fetch + git merge.
+example: git pull
+
+Git Fetch:
+------------
+It fetches all the changes from the remote repository and stores it in a separate branch
+in your local repository. You can reflect those changes in your corresponding branches 
+by merging. 
+example: git fetch 
+         git merge
+
+Git Cherry-pick:
+-----------------
+Cherry-picking in Git stands for applying some commit from one branch into another branch. 
+In case you made a mistake and committed a change into the wrong branch, but do not want
+to merge the whole branch. You can revert the commit and apply it on another branch.
+example:git cherry-pick commitid
+
+
+
+Git revert:
+-------------------------
+to revert back any commit/To undo a commit
+git revert commitid
+
+
+
+Git Stash:
+------------
+Sometimes you want to switch the branches, but you are working on an incomplete part of your
+current project. You don't want to make a commit of half-done work. Git stashing allows you 
+to do so. The git stash command enables you to switch branches without committing the current
+branch.
+commands:
+git stash
+git stash list
+git stash apply
+git stash pop
+
+purpose of gitignore:
+---------------------------------------------
+to ignore the unwanted files
+vi .gitignore
+save by giving *.class
+
