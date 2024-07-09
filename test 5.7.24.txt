@@ -1,0 +1,51 @@
+1.What is Ansible? What are the key components of Ansible?
+2.What are the benefits of using Ansible and What is an Ansible playbook?
+3.What is Nexus Repository Manager and What are the different repository formats supported by Nexus?
+4.What is SonarQube and What are the key features of SonarQube?
+5.Deploy a java project using jenkins pipeline in tomcat and store artifacts in nexus repository with SonarQube(execution) 
+
+
+
+1.What is Ansible?
+Ansible is an open-source automation tool used for configuration management, application deployment, task automation, and orchestration.
+
+1.What are the key components of Ansible?
+
+Inventory: A list of managed nodes.
+Playbooks: YAML files that define tasks and configurations.
+Modules: Units of code Ansible executes on remote hosts.
+Roles: Organizational units for playbook content.
+
+2. What are the benefits of using Ansible?
+
+Simplicity: Uses YAML syntax and doesn't require agent installation.
+Powerful: Handles complex orchestration and automation tasks.
+Scalability: Can manage thousands of nodes with ease.
+
+2.What is an Ansible playbook?
+An Ansible playbook is a YAML file that defines a set of tasks to be executed on remote hosts. It includes information about hosts, roles, variables, and tasks to be performed.
+
+
+3. What is Nexus Repository Manager?
+
+Nexus Repository Manager is a repository manager used for storing and managing binary components. It supports various repository formats like Maven, npm, Docker, and others.
+3. What are the different repository formats supported by Nexus?
+
+Maven repositories
+npm (Node Package Manager) repositories
+Docker repositories
+PyPI (Python Package Index) repositories
+Raw repositories (generic repositories for any type of binary)
+
+4. What is SonarQube?
+
+SonarQube is an open-source platform for continuous inspection of code quality. It performs static code analysis to identify bugs, code smells, security vulnerabilities, and other quality issues in codebases.
+
+4. What are the key features of SonarQube?
+
+Static code analysis across multiple languages.
+Detection of bugs, vulnerabilities, code smells, and security hotspots.
+Integration with CI/CD pipelines for automated code reviews.
+Dashboard and reports for tracking code quality metrics over time.
+Support for various programming languages and frameworks.
+

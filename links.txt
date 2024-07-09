@@ -1,0 +1,13 @@
+1. jenkins war file -  https://get.jenkins.io/war-stable/2.440.1/jenkins.war
+
+2. tomcat tar.gz file- https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.86/bin/apache-tomcat-9.0.86.tar.gz
+
+3. nexus tar.gz file - https://download.sonatype.com/nexus/3/nexus-3.65.0-02-unix.tar.gz
+
+4. sonarQube zip file - https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
+
+5. webmail portal link - https://www.developtrees.com:2096/
+
+6. terraform documentation link for aws -  https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
+7. terraform documentation link for github - https://registry.terraform.io/providers/integrations/github/latest/docs

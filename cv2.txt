@@ -1,0 +1,8 @@
+Cv2
+
+1 sudo apt-get update 
+2 sudo apt-get install libopencv-dev python -opencv
+3 pip install opencv-python
+4 python(to check cv2 installed or not )
+5 import cv2
+6 print(cv2.._version_)

@@ -1,0 +1,39 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install openjdk-17-jdk
+java --version
+sudo apt install spring
+git clone https://github.com/satyapujari06/mymart.git
+sudo apt install python3-venv
+python3 -m venv ram
+source ram/bin/activate
+ls
+cd mymart/
+nano MyMart/src/main/resources/application.properties 
+sudo apt install maven
+sudo apt install gradle
+cd MyMart/
+mvn clean package
+java -jar target/MyMart-0.0.1-SNAPSHOT.jar
+sudo apt install gunicorn
+sudo apt install supervisor
+cd /etc/supervisor/conf.d/
+which gunicorn
+sudo nano gunicorn.conf
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl status
+cd ~/mymart/MyMart/
+java -jar target/MyMart-0.0.1-SNAPSHOT.jar
+sudo apt install nginx -y
+cd /etc/nginx/sites-available/
+sudo rm default*
+sudo nano default
+sudo service  nginx restart
+sudo service  nginx status
+cd ~/mymart/MyMart/
+java -jar target/MyMart-0.0.1-SNAPSHOT.jar
+nohup java -jar target/MyMart-0.0.1-SNAPSHOT.jar > spring_boot.log 2>&1 &
+jobs -l
+ps -ef | grep "MyMart-0.0.1-SNAPSHOT.jar"
+kill (id)

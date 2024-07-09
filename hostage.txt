@@ -1,0 +1,44 @@
+
+    1  apt update
+    2  apt upgrade -y
+    4  python3 --version
+    5  apt install python3-pip
+    6  pip list
+    7  pip install virtualenv
+   10  apt install python3-venv
+   11  python3 -m venv ntr
+   12  ls
+   13  cd ntr/bin/
+   16  source activate
+   17  cd ../..
+   18  pip install django
+   19  django-admin --version
+   20  git clone https://github.com/smahesh29/Django-WebApp.git
+   21  ls
+   22  cd Django-WebApp/
+   23  ls
+   24  cd django_web_app/
+   25  ls
+   26  cd blog/
+   27  ls
+   28  cd templates/blog/
+   29  ls
+   30  vi base.html {--> in this staticfiles to static} remove files
+   31  cd ../../..
+   32  ls
+   33  cd django_web_app/
+   34  ls
+   35  vi settings.py  {--> in this allowhost["ip address"]}
+   36  cd ..
+   37  python.py makemigrations
+   38  python manage.py makemigrations
+   39  pip install django-crispy-forms
+   40  python manage.py makemigrations
+   41  pip install easy-pil
+   42  python manage.py makemigrations
+   43  python manage.py migrate
+   44  python manage.py runserver 0.0.0.0:8080
+
+   45 sudo apt install gunicorn
+   46 gunicorn --version
+   47 whereis gunicorn   (/usr/bin/gunicorn /usr/share/man/man1/gunicorn.1.gz)

@@ -1,0 +1,24 @@
+openlogic-openjdk-8u402-b06-linux-x64-el.rpm
+   12  ls
+   13  tar -xvf latest-unix.tar.gz
+   14  ls
+   15  cd nexus-3.64.0-04/
+   16  cd bin/
+   17  ./nexus start
+   18  yum install java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64
+   19  ./nexus start
+
+
+
+    1  wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u402-b06/openlogic-openjdk-8u402-b06-linux-x64-el.rpm
+    2  ls
+    3  sudo yum install openlogic-openjdk-8u402-b06-linux-x64-el.rpm
+    4  wget https://download.sonatype.com/nexus/3/nexus-3.66.0-02-unix.tar.gz
+    5  ls
+    6  tar -xvf nexus-3.66.0-02-unix.tar.gz 
+    7  ls
+   08  adduser nexus
+   09  chown -R nexus:nexus nexus-3.66.0-02 sonatype-work/
+   10  chmod -R 775 nexus-3.66.0-02 sonatype-work/
+   11  cd nexus-3.66.0-02/bin/
+   12  ./nexus start

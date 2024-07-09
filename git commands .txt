@@ -1,0 +1,46 @@
+git init
+
+git config --global   user.name "deva0510"
+
+git config --global   user.email  "adevaraj54@gmail.com"
+
+git config  --global  --list
+-----------------------------------------------------------------------
+git init
+
+git status
+
+git  add  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10
+
+git  add .
+
+git rm  --cached f1 f2 f3 (Bring file back to untracked section)
+or
+git reset  f1 f2 f3 
+
+git  commit  -m  "first commit"
+
+git status
+
+git log (To see the list of commit)
+
+git branch -M master
+
+git branch branchname ( to create a new branch)
+
+git checkout  branchname (switching from one branch to another branch)
+ex: git checkout development
+
+git checkout –b branchname (Creating a branch and check out to the branch at a time)
+
+git remote add origin https://github.com/OWNER/REPOSITORY.git (repo code)
+                 
+git push --all -u  (How to all push local branches to remote repository)
+
+git push -u origin test1 (to push single local branch to remote repository)
+
+git merge branchname (To merge  branch with  master)
+
+git branch --delete branchname (to delete a branch)
+
+git push origin --delete branchname (How to delete a branch in remote repository from local)

@@ -1,0 +1,16 @@
+
+    1  aws --version
+   02  aws configure
+   03  aws s3 mb s3://mybucket051098
+   04  aws s3 rb s3://mybucket051098 --force
+   05  vi demofile
+   06  aws s3 cp demofile s3://mybucket051098/
+   07  aws s3api put-public-access-block --bucket mybucket051098 --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+   08  aws iam create-group --group-name MyIamGroup
+   09  aws iam create-user --user-name MyUser
+   10  aws iam add-user-to-group --user-name MyUser --group-name MyIamGroup
+   11  aws iam get-group --group-name MyIamGroup
+   12 aws iam attach-group-policy --group-name MyIamGroup --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+   13 aws iam list-attached-group-policies --group-name MyIamGroup
+
+

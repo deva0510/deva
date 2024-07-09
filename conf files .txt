@@ -1,0 +1,53 @@
+[program:gunicorn]
+
+directory = /home/ubuntu/lms11.6.24        
+command =  /home/ubuntu/ntr/bin/gunicorn --workers 3 --bind 8000  unix:/home/ubuntu/lms11.6.24/app.sock lms_main.wsgi.application
+autostart = true
+autorestart = true
+stderr_logfile = /var/log/gunicorn/gunicorn.err.log
+stdout_logfile = /var/log/gunicorn/gunicorn.out.log
+
+[group : guni]
+
+
+
+
+server {
+    server_name 13.200.243.175    ;
+    listen 80;
+    listen [::]:80;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://0.0.0.0:8000;
+    }
+}
+
+server {
+    server_name 13.200.243.175;
+    listen 80;
+    listen [::]:80;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://0.0.0.0:8000;
+        proxy_buffer_size       128k;
+        proxy_buffers           4 256k;
+        proxy_read_timeout      60s;
+        proxy_busy_buffers_size 256k;
+        client_max_body_size    2M;
+    }
+}
+
+server {
+       listen 80;
+       server_name 20.197.53.155;
+
+       location / {
+               include proxy_params;
+               proxy_pass http://unix/home/ubuntu/worktridev/app.sock;
+       }
+       location / static {
+               autoindex on;
+               alias /home/ubuntu/worktridev/static;
+}

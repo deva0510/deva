@@ -1,0 +1,85 @@
+
+    2  sudo apt update
+    3  sudo apt upgrade
+    5  sudo apt install python3-pip
+    6  pip install virtualenv
+    7  sudo apt install python3-venv
+   10  python3 -m venv devara
+   11  ls
+   13  source devara/bin/activate
+   14  pip install django
+   16  pip install gunicorn
+   17  sudo apt install gunicorn
+   18  sudo apt install supervisor
+   19  ls
+   20  git clone https://github.com/deva0510/Django-WebApp.git
+   21  ls
+   23  cd Django-WebApp/
+   24  ls
+   25  cd django_web_app/
+   26  nano settings.py {in allowed host[ipaddress]}
+   27  cd ..
+   28  python manage.py makemigrations
+   29  pip install django-crispy-forms
+   31  pip install easy-pil
+   32  python manage.py makemigrations
+   33  python manage.py migrate
+   34  python manage.py runserver 0.0.0.0:8000
+   35  cd
+   36  cd ../..
+   37  ls
+   38  cd etc/supervisor/conf.d/
+   39  ls
+   40  whereis gunicorn
+   40  sudo nano gunicorn.conf
+   41  sudo supervisorctl reread
+   42  sudo supervisorctl status
+   51  cd ../../..
+  126  sudo apt install nginx
+  127  cd /etc/nginx/sites-available/
+  128  ls
+  129  sudo nano default 
+  130  sudo service  nginx restart
+       sudo systemctl restart nginx
+  131  sudo service  nginx status
+  132  cd
+  133  ls
+  134  cd ../..
+  135  ls
+  136  cd etc/supervisor/conf.d/
+  137  sudo supervisorctl status
+       gunicorn django_web_app.wsgi:application -b localhost:8000 &
+       sudo pkill gunicorn
+  
+
+
+gunicorn.conf
+----------------
+
+[program:gunicorn]
+
+directory = /home/ubuntu/Django-WebApp/django_web_app
+command =  /home/ubuntu/ntr/bin/gunicorn --workers 3 --bind 8000  unix:/home/ubuntu/Django-WebApp/django_web_app/app.sock django_web_app.wsgi.application
+autostart = true
+autorestart = true
+stderr_logfile = /var/log/gunicorn/gunicorn.err.log
+stdout_logfile = /var/log/gunicorn/gunicorn.out.log
+
+[group : guni]
+
+
+
+nginx  configurations in sites-activate
+----------------------------------------
+
+
+server {
+    server_name 34.207.125.188;
+    listen 80;
+    listen [::]:80;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://0.0.0.0:8000;
+    }
+}

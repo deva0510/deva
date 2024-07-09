@@ -1,0 +1,37 @@
+    1  yum install docker
+    2  docker -v
+    3  usermod -a -G docker ec2-user
+    4  systemctl enable docker.service
+    5  systemctl status docker.service
+    6  systemctl start docker.service
+    7  systemctl status docker.service
+    8  docker pull jenkins/jenkins
+    9  docker images
+   10  docker ps
+   11  docker ps -a
+   12  docker run -it 208bdf1be3b9
+   13  docker run -itd 208bdf1be3b9
+   14  docker ps
+   15  docker ps -a
+   16  yum install java-11
+   17  java --version   
+   18  docker run -it 208bdf1be3b9
+   19  docker run -it -p 8080:8080 208bdf1be3b9
+   20  docker pull sonatype/nexus3
+   21  docker images
+   22  docker run -it -p 8081:8081 sonatype/nexus3
+   23  docker pull tomcat/tomcat01
+   24  ls
+   25  docker images
+   26  docker ps -a
+   27  docker run -itd --name tomcatguna 52dacec68f06
+   28  docker ps -a
+   29  docker exec -it 9cd6b5817680 /bin/bash
+   30  docker ps
+   31  docker ps -a
+
+
+
+
+
+chmod 666 /var/run/docker.sock

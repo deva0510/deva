@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('code cloneing') {
+            steps {
+                git 'https://github.com/shashirajraja/onlinebookstore.git'
+            }
+        }
+        stage('code building') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('code deploying') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: '8927bd29-5e2b-4343-b995-02aa68f88889', path: '', url: 'http://13.126.118.166:8080/')], contextPath: 'ntr.war', war: '**/*.war'
+            }
+        }
+    }
+}
+

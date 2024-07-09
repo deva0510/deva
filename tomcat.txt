@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users>
+        <role rolename="manager-gui"/>
+        <user username="tomcat" password="tomcat" roles="manager-gui, manager-script, manager-status"/>
+</tomcat-users>
+
+
+
+
+1  apt install default-jdk
+    2  java --version
+    3  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85.tar.gz
+    4  ls
+    5  tar -xvf apache-tomcat-9.0.85.tar.gz
+    6  ls
+    7  cd apache-tomcat-9.0.85/
+    8  ls
+    9  cd bin/
+   10  ls
+   11  ./startup.sh
+   12  cd ..
+   13  cd conf/
+   14  ls
+   15  vi tomcat-users.xml  (role ,user,password)
+   16  cd ..
+   17  cd bin/
+   18  ./shutdown.sh
+   19  ./startup.sh
+   20  cd ..
+   21  ls
+   22  cd webapps/
+   23  ls
+   24  cd manager/
+   25  ls
+   26  cd META-INF/
+   27  ls
+   28  vi context.xml  (".*")
+   29  ./shutdown.sh
+   30  ./startup.sh 

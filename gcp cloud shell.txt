@@ -1,0 +1,41 @@
+
+    4  gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project long-advice-415803
+    6  kubectl run --image jenkins/jenkins myjen
+    7  kubectl get nodes
+    8  kubectl get pods
+    9  kubectl get pods myjen
+   10  kubectl delete pods myjen
+   11  kubectl get pods
+   12  kubectl get pods -o wide
+   13  kubectl run --image jenkins/jenkins myjen
+   14  kubectl get pods -o wide
+   15  vim deva.yml
+   16  kubectl create -f pod-deva.yml
+   17  kubectl create -f deva.yml
+   18  kubectl get pods
+   19  kubectl get pods -o wide
+   20  kubectl delete --all pods
+   21  kubectl get pods -o wide
+   22  exit
+   23  gcloud container clusters get-credentials mycluster --zone us-central1-c --project long-advice-415803
+   24  kubectl get pods
+   25  vim develop.yml
+   26  kubectl create -f pod develop.yml 
+   27  kubectl create -f develop.yml 
+   28  kubectl get pods
+   29  kubectl get pods -o wide
+   30  kubectl get ns
+   31  kubectl create ns developtrees-devlop
+   32  kubectl get ns
+   33* kubectl run --image jenkins/jenkins ns developtrees-deve
+   34  kubectl get pods -n developtrees-develop
+   35  kubectl get pods -n developtrees-devlop
+   36  kubectl run --image jenkins/jenkins ns developtrees-devlop
+   37  kubectl get pods -n developtrees-devlop
+   38  kubectl run --image jenkins/jenkins myjenk -n developtrees-devlop
+   39  kubectl get pods -n developtrees-devlop
+   40  kubectl get pods -n developtrees-devlop -o wide
+   41  kubectl delete pods myjenki -n developtrees-devlop
+   42  kubectl delete pods myjenk -n developtrees-devlop
+   43  kubectl get pods -n developtrees-devlop -o wide
+   44  kubectl get pods

@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone') {
+            steps {
+             git 'https://github.com/shashirajraja/onlinebookstore.git'
+            }
+        }
+        
+        stage('build') {
+            steps {
+             sh 'mvn clean install'
+            }
+        }
+        
+         stage('deploy') {
+            steps {
+             nexusArtifactUploader artifacts: [[artifactId: 'onlinebookstore', classifier: '', file: 'target/onlinebookstore.war', type: 'war']], credentialsId: 'ntr', groupId: 'onlinebookstore', nexusUrl: '13.201.72.202:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '0.0.1-SNAPSHOT'
+            }
+        }
+    }
+}
+
+
+
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/shashirajraja/onlinebookstore.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    
+        stage('Upload to Nexus') {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: '3.110.32.236:8081',
+                    groupId: 'onlinebookstore',
+                    version: '0.0.1-SNAPSHOT',
+                    repository: 'maven-snapshots',
+                    credentialsId: 'nexus-secret',
+                    artifacts: [
+                        [artifactId: 'onlinebookstore',
+                        classifier: '',
+                        file: 'target/onlinebookstore.war',
+                        type: 'war']
+                    ]
+                )
+            }
+        }
+    }
+    
+}

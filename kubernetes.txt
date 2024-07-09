@@ -1,0 +1,43 @@
+MASTER 
+1  yum install docker -y
+    2  systemctl start docker
+    3  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+    4  [kubernetes]
+    5  name=Kubernetes
+    6  baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
+    7  enabled=1
+    8  gpgcheck=1
+    9  gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
+   10  exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+   11  EOF
+   12  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   13  sudo systemctl enable --now kubelet
+   14  yum repolist
+   15  kubeadm init
+   16  mkdir -p $HOME/.kube
+   17    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   18    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   19  export KUBECONFIG=/etc/kubernetes/admin.conf
+   20  kubectl get nodes
+
+
+NODE1 
+
+1  yum install docker -y
+    2  sydtemctl start docker
+    3  systemctl start docker
+    4  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+    5  [kubernetes]
+    6  name=Kubernetes
+    7  baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
+    8  enabled=1
+    9  gpgcheck=1
+   10  gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
+   11  exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+   12  EOF
+   13  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   14  sudo systemctl enable --now kubelet
+   15  ls
+   16  yum repolist
+   17  kubeadm join 172.31.1.214:6443 --token e3alct.yfnehf5g1fo3ec7d         --discovery-token-ca-cert-hash sha256:4ffedda38ce9497ce5e84748b1406a769254db7e9ff5fa57a521fb58ff1e45f8
+   

@@ -1,0 +1,41 @@
+1  sudo apt update
+    2  sudo apt upgrade
+    3  ls
+    4  sudo apt install pip
+    5  sudo apt install python3-venv
+    6  pip install virtualenv
+    7  python3 -m venv ntr
+    8  ls
+    9  source ntr/bin/activate
+   10  pip install django
+   11  git clone https://github.com/deva0510/teerdhabookingpage.git
+   12  cd teerdhabookingpage/
+   13  sudo nano Teerdhaproject/settings.py 
+   14  sudo apt install libmysqlclient-dev
+   16  sudo apt-get install libfreetype6-dev
+   15  sudo apt install pkg-config
+   16  pip install -r requirements.txt 
+   17  python3 manage.py makemigrations
+   18  python3 manage.py migrate
+   19  python3 manage.py runserver 0.0.0.0:8000
+   20  sudo apt install gunicorn nginx
+   21  gunicorn --version
+   22  nginx -v
+   23  sudo apt install supervisor
+   24  pip install gunicorn
+   25  cd /etc/supervisor/conf.d/
+   26  sudo nano gunicorn.conf
+   27  sudo supervisorctl update
+   28  sudo supervisorctl reread
+   29  sudo supervisorctl status
+   30  cd ../..
+   31  cd nginx/sites-available/
+   32  ls
+   33  sudo nano default 
+   34  sudo nano ram
+   35  sudo systemctl restart nginx.service 
+   36  sudo systemctl status nginx.service 
+   37  cd
+   38  cd teerdhabookingpage/
+   39  gunicorn Teerdhaproject.wsgi:application -b 0.0.0.0:8000 &
+   40  sudo pkill gunicorn

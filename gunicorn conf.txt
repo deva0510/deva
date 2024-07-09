@@ -1,0 +1,20 @@
+[program:gunicorn]
+
+directory = /home/ubuntu/django_web_app
+command = /home/ubuntu/ntr/bin/gunicorn --workers 3 --bind 3.111.219.39:8000 --access-logfile /var/log/gunicorn/access.log --error-logfile /var/>
+autostart = true
+autorestart = true
+stderr_logfile = /var/log/gunicorn/gunicorn.err.log
+stdout_logfile = /var/log/gunicorn/gunicorn.out.log
+
+
+[program:gunicorn]
+
+directory = /home/ubuntu/Django-WebApp/django_web_app
+command = /home/ubuntu/devara/bin/gunicorn  --workers 3 --bind 8000 unix:/home/ubuntu/Django-WebApp/django_web_app/app.sock django_web_app.wsgi.application
+autostart = true
+autorestart = true
+stderr_logfile = /var/log/gunicorn/gunicorn.err.log
+stdout_logfile = /var/log/gunicorn/gunicorn.out.log
+
+[group : guni]

@@ -1,0 +1,92 @@
+
+provider "aws" {
+  region = "ap-south-1"
+  access_key = ""
+  secret_key = ""
+}
+
+
+instance
+
+
+resource "aws_instance" "my_instance" {
+  ami           = ""
+  instance_type = "t2.micro"
+}
+
+s3 bucket private
+
+
+provider "aws" {
+  region = "us-west-2"  # Set your desired AWS region
+}
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-unique-bucket-name"
+  acl    = "private"  # Set the access control list (ACL)
+}
+
+
+
+
+creating s3 bucket public
+
+provider "aws" {
+  region = "ap-south-1"
+  access_key = ""
+  secret_key = ""
+}
+
+resource "aws_s3_bucket" "newbucket1" {
+  bucket = "my-buckets999966"
+  #acl    = "public-read-write"  # Set the access control list (ACL)
+}
+
+resource "aws_s3_bucket_ownership_controls" "newbucket1" {
+  bucket = aws_s3_bucket.newbucket1.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "newbucket1" {
+  bucket = aws_s3_bucket.newbucket1.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_acl" "newbucket1" {
+  depends_on = [
+    aws_s3_bucket_ownership_controls.newbucket1,
+    aws_s3_bucket_public_access_block.newbucket1,
+  ]
+
+  bucket = aws_s3_bucket.newbucket1.id
+  acl    = "public-read"
+}
+
+
+github repofile creation
+
+provider "github" {
+  token = ""
+}
+
+resource "github_repository" "food" {
+  name      = "testrepo1"
+  auto_init = true
+}
+
+resource "github_repository_file" "food" {
+  repository          = github_repository.food.name
+  branch              = "main"
+  file                = ".devara"
+  content             = "mymovie name is devara iam big fan of jrNTR"
+  commit_message      = "Managed by Terraform"
+  commit_author       = "Terraform User"
+commit_email        = "terraform@example.com"
+  overwrite_on_create = true
+}

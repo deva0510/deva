@@ -1,0 +1,24 @@
+
+    2  cd ..
+    3  ls
+    4  cd opt
+    5  yum install java-11 -y
+    6  java --version
+    7  wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
+    8  ls
+    9  unzip sonarqube-7.6.zip 
+   10  adduser sonar
+   13  visudo   (sonar  ALL:ALL NOPASSWD:ALL)
+   16  chmod -R 775 /opt/sonarqube-7.6
+   17  chown -R sonar/sonar /opt/sonarqube-7.6
+   19  su - sonar
+after shifting to sonar user 
+20. cd /opt/sonarqube-7.6
+21. ls
+22. cd bin
+23. cd linux-x86-64/
+24. ./sonar.sh start   
+
+
+
+https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.6.92038.zip

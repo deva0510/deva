@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('code cloning') {
+            steps {
+                git branch: 'main', url: 'https://github.com/guna1234567/dockerproject.git'
+            }
+        }
+        stage('code building') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('convert artifacts to docker image') {
+            steps {
+                sh 'docker build -t 3.110.151.45:9090/gunasekhar .'
+            }
+        }
+stage('giving cred to nexus') {
+            steps {
+                sh 'docker login -u admin -p admin 3.110.151.45:9090'
+            }
+        }
+        stage('upload docker image to nexus') {
+            steps {
+                sh 'docker push 3.110.151.45:9090/gunasekhar'
+            }
+        }
+    }
+}
+
+
+
+
+
+{
+        "insecure-registries" : ["3.110.151.45:9090"]
+}

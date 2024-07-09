@@ -1,0 +1,11 @@
+12   import os
+40   (App name)
+58   'DIRS': [os.path.join(BASE_DIR,"templates")],
+79   'ENGINE': 'django.db.backends.mysql',
+80   'NAME': 'mydatabase',
+81   'HOST': 'localhost',
+82    'USER': 'root',
+83    'PASSWORD': '',
+84    'PORT': '3306',
+130   MEDIA_URL="/media/"
+131   MEDIA_ROOT=os.path.join(BASE_DIR,"media")

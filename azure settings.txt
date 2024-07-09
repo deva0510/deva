@@ -1,0 +1,11 @@
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
+CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ['lmsdbname'],
+        'HOST': os.environ['lmshost'],
+        'PORT':'3306',
+        'USER': os.environ['lmsuser'],
+        "PASSWORD": os.environ['lmspass'],

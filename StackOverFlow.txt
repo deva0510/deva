@@ -1,0 +1,22 @@
+    1  sudo apt update
+    2  sudo apt upgrade
+    3  sudo apt install python3-pip
+    4  pip install virtualenv
+    
+    6  sudo apt install python3-venv
+    7  python3 -m venv ntr
+    8  ls
+    9  source ntr/bin/activate
+   10  ls
+   11  git clone https://github.com/deva0510/StackOverFlow--Clone.git
+   12  ls
+   13  cd StackOverFlow--Clone/
+   14  python3 manage.py makemigrations
+       sudo apt-get install libpq-dev
+   15  python3 -m pip install --upgrade pip
+   20  python3 -m pip install psycopg2-binary
+   21  pip install -r requirements.txt
+   49  python3 manage.py makemigrations
+   50  python3 manage.py migrate
+   52  python3 manage.py runserver 0.0.0.0:8000
+   53  python manage.py collectstatic

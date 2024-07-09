@@ -1,0 +1,109 @@
+in controller
+-------------
+
+    1  sudo apt update
+    2  sudo apt upgrade
+    3  sudo apt install ansible -y
+    4  ansible --version
+    5  ssh-keygen -t rsa -b 2048 (enter and give password and conform password)
+    6  cat /home/ubuntu/.ssh/id_rsa.pub 
+    7  ls
+    8  ssh ubuntu@13.235.23.87 (to connect node1 give node1 publicip)-----> it will connect to private it
+    9  ssh ubuntu@3.110.29.64  (to connect node2 give node2 publicip)-----> it will connect to private it
+
+   10  vim inventory  {  [nodes]
+                         node1 ansible_host=13.235.23.87
+                         node2 ansible_host=3.110.29.64   }
+      
+   11  ansible -i inventory nodes -m ping
+
+Enter passphrase for key '/home/ubuntu/.ssh/id_rsa': 
+node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+yes
+
+Enter passphrase for key '/home/ubuntu/.ssh/id_rsa': 
+node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+
+in node 1
+---------
+
+vi .ssh/authorized_keys  [here paste the controller path and save ]
+
+in node 2
+----------
+
+vi .ssh/authorized_keys {here paste the controller path and save}
+
+in controller node 
+------------------
+12  vim hosts.ini
+-------------
+node1 ansible_host=172.31.46.139  (private ip)
+node2 ansible_host=172.31.41.186  (private ip)
+
+
+13  vim installnginx.yml
+    ---------------
+
+---
+- name: install nginx
+  hosts: all
+  become: 'yes'
+  tasks:
+    - name: install nginx
+      apt:
+         name: nginx
+         state: latest
+    - name: start nginx
+      service:
+         name: nginx
+         state: started
+         enabled: 'yes'
+
+14  ansible-playbook -i hosts.ini installnginx.yml
+
+15 vim uninstallnginx.yml
+--------------------
+
+---
+- name: Remove Nginx from hosts
+  hosts: all
+  become: yes
+  tasks:
+    - name: Stop Nginx Service
+      service:
+        name: nginx
+        state: stopped
+
+    - name: Remove Nginx
+      apt:
+        name: nginx
+        state: absent
+
+16  ansible-playbook -i hosts.ini uninstallnginx.yml
+
+17  vim hosts.yml
+
+all:
+  children:
+    webservers:
+      hosts:
+        node1:
+          ansible_host: 172.31.46.139 (private ip of node1)
+        node2:
+          ansible_host: 172.31.41.186 (private ip of node2)
+
+18 ansible-playbook -i hosts.yml installnginx.yml
